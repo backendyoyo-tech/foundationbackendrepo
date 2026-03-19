@@ -8,11 +8,13 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String   @unique
+  mobile      String   @unique
+  password    String
+  isVerified  Boolean  @default(false)
+  createdAt   DateTime @default(now())
 }
 
 
@@ -25,4 +27,12 @@ model Contact {
   subject   String
   message   String
   createdAt DateTime @default(now())
+}
+
+model Otp {
+  id         Int      @id @default(autoincrement())
+  identifier String   // email OR mobile
+  otp        String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
 }

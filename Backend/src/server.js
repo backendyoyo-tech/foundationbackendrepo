@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const prisma = require("./config/db");
 const contactRoutes = require("./routes/contact.routes");
+const authRoutes = require("./routes/auth.routes");
 const app = express();
 
 app.use(cors());
@@ -22,6 +23,10 @@ app.get("/users", async (req, res) => {
 
 //contact api call 
 app.use("/api/contact", contactRoutes);
+
+//sigup/login
+app.use("/api/auth", authRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 
